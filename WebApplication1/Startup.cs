@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Data;
 
 namespace WebApplication1
 {
@@ -33,6 +35,9 @@ namespace WebApplication1
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<WebApplication1Context>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("WebApplication1Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
