@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Data;
 
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(WebApplication1Context))]
-    partial class WebApplication1ContextModelSnapshot : ModelSnapshot
+    [Migration("20220803193319_Correcao")]
+    partial class Correcao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
