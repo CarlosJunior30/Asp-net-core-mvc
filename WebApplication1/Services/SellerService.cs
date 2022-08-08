@@ -15,9 +15,15 @@ namespace WebApplication1.Services
             _context = context;
 
         }
-        public List <Seller> FindALL()//Retorna uma Lista com todos os vendedores;
+        public List <Seller> FindALL()//Retorna uma Lista com todos os vendedores,
         {
             return _context.Seller.ToList();
         }
+        public void Insert(Seller obj)//Inserir novo vendedor no Banco de Dados,
+        {
+            _context.Add(obj);
+            _context.SaveChanges();
+        }
+
     }
 }
