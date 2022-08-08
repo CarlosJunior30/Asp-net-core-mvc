@@ -21,7 +21,7 @@ namespace WebApplication1.Services
         }
         public void Insert(Seller obj)//Inserir novo vendedor no Banco de Dados,
         {
-            obj.Department = _context.Department.First();
+            
             _context.Add(obj);
             _context.SaveChanges();
         }

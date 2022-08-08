@@ -41,6 +41,7 @@ namespace WebApplication1
                     options.UseMySql(Configuration.GetConnectionString("WebApplication1Context")));
             services.AddScoped<SeedingService>();
             services.AddScoped<SellerService>();
+            services.AddScoped <DepartmentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
