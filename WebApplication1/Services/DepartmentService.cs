@@ -2,6 +2,8 @@
 using WebApplication1.Data;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Services
 {
@@ -14,9 +16,9 @@ namespace WebApplication1.Services
             _context = context;
 
         }
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()//funcao asyncrona
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }
