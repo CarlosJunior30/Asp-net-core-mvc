@@ -37,6 +37,12 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                var departements = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departements };
+                return View(viewModel);
+            }
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -44,7 +50,7 @@ namespace WebApplication1.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error),new {message = "Id not provided"});
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
@@ -94,6 +100,13 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
+            if (ModelState.IsValid)
+            {
+                var departements = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departements };
+                return View(viewModel);
+            }
+
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id is match" });
@@ -115,7 +128,7 @@ namespace WebApplication1.Controllers
 
         }
         public IActionResult Error(string message)
-		{
+        {
             var viewModel = new ErrorViewModel
             {
                 Message = message,
@@ -125,6 +138,6 @@ namespace WebApplication1.Controllers
             };
             return View(viewModel);
 
-		}
+        }
     }
 }
