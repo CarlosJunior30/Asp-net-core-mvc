@@ -10,7 +10,6 @@ namespace WebApplication1.Services
     public class DepartmentService
     {
         private readonly WebApplication1Context _context;
-
         public DepartmentService(WebApplication1Context context)
         {
             _context = context;
